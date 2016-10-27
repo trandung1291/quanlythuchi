@@ -64,9 +64,45 @@
 			background-color: #eeeeee; /* non-RGBA fallback  */
 			background-color: rgba(0,0,0,.04);
 		}
-		.table-stripe tbody tr:nth-child(2n+1) td, .table-stripe tbody tr:nth-child(2n+1) th { background-color: #5FDDC8;}
+		.table-stripe tbody tr:nth-child(2n+1) td, .table-stripe tbody tr:nth-child(2n+1) th { background-color: #18914A;}
 		.ui-content{
 			 padding: 0px;
+		}
+		
+		.ui-btn, .ui-btn:visited {
+			background-color: #f6f6f6;
+			border-color: #ddd;
+			color: #333;
+			text-shadow: 0 1px 0 #f3f3f3;
+		}
+		
+		.collap-color .ui-collapsible-heading-collapsed > .ui-collapsible-heading-toggle {
+			background:#24C166 !important;
+		}
+		.collap-color .ui-collapsible-heading-toggle {
+			background:#18914A !important;
+		}
+		.ui-collapsible-heading a{
+			color:white !important;
+			text-shadow:none !important;
+		}
+		.ui-corner-all{
+			border-radius: 0px !important;
+		}
+		
+		.ui-input-text{
+			margin:10px;
+		}
+		
+		.ui-bar-inherit{
+			background-color: #18914a !important;
+			border-color: #18914a !important;
+			color: white !important;
+			text-shadow: none !important;
+		}
+		
+		.ui-header .ui-title{
+			min-height: 2.1em !important;
 		}
 	</style>
     <title>Quản lý thu chi</title>
@@ -82,7 +118,7 @@
                 <h1>Quản lý chi tiêu</h1>
 				<div data-role="navbar" class="ui-navbar" role="navigation">
 					<ul class="ui-grid-b">
-							<li class="ui-block-a"><a href="#" data-icon="grid" class="ui-link ui-btn ui-icon-grid ui-btn-icon-top ui-btn-active">Summary</a></li>
+							<li class="ui-block-a"><a href="#" data-icon="grid" class="ui-link ui-btn ui-icon-grid ui-btn-icon-top ui-btn-active" onclick=" $.mobile.changePage( '#page3', { reverse: false, transition: 'slide' } );">Summary</a></li>
 							<li class="ui-block-b"><a href="#" data-icon="star" class="ui-link ui-btn ui-icon-star ui-btn-icon-top">Favs</a></li>
 							<li class="ui-block-c"><a href="#" data-icon="gear" class="ui-link ui-btn ui-icon-gear ui-btn-icon-top">Setup</a></li>
 					</ul>
@@ -130,7 +166,7 @@
 							 <th data-priority="5">Ghi chú</th>
 						   </tr>
 						 </thead>
-						 <tbody>
+						 <tbody style="color: black; text-shadow: none">
 						   <tr>
 							 <th>2</th>
 							 <td><a href="" data-rel="external">Citizen Kane</a></td>
@@ -296,7 +332,43 @@
 		   </div>
              <a></a>
         </div>
-
+		<div data-role="page" id="page3" >
+			<div data-role="header"  data-fullscreen="true" data-add-back-btn="true">
+			  <h1>Tính toán chi tiêu</h1>
+			</div>
+			<div data-role="content"> 
+				
+					<label for="thunhap">Thu nhập: <span class="vl"></span></label>
+					
+					<input name="thunhap" id="thunhap" value="" type="text" data-clear-btn="true">
+					
+				<div data-role="collapsible" data-collapsed="false" data-iconpos="right" class="collap-color">
+					<h4>Chi tiêu cần thiết 55%( NEC )</h4>
+					<p>Đây là tài khoản tiêu dùng cho những chi phí cần thiết của bạn, như là ăn uống, đi lại, kể cả mua sắm những thứ cần thiết cho bản thân.</p>
+				</div>
+				<div data-role="collapsible" data-collapsed="false" data-iconpos="right" class="collap-color">
+				    <h4>Khoản tiết kiệm 10%( LTSS )</h4>
+				    <p>Tài khoản này bạn dùng để tiết kiệm cho các kế hoạch dài hạn như mua nhà , sắm xe, dành dụm cho đám cưới.</p>
+				</div>
+				<div data-role="collapsible" data-collapsed="false" data-iconpos="right" class="collap-color">
+				    <h4>Tài khoản giáo dục 10%( EDU )</h4>
+				    <p>Đây là tài khoản giáo dục cho chính bạn, tức là để cho bạn nâng cấp bản thân. Tài khoản này có thể được chi tiêu vào các khoản như tham gia các khoá học nâng cấp bản thân, mua sách hoặc tài liệu học tập, ...</p>
+				</div>
+				<div data-role="collapsible" data-collapsed="false" data-iconpos="right" class="collap-color">
+				    <h4>Tự do tài chính 10%( FFA )</h4>
+				    <p>Đây là tài khoản dùng để đầu tư sinh lợi nhuận. Có nhiều cách để đầu tư nhưng ví dụ bạn có thể dùng để chơi chứng khoán, hoặc để dành khi nào nhiều nhiều có thể hùn vốn làm ăn với bạn bè, hay mở một cửa hàng nhỏ, thậm chí là mở công ty.</p>
+				</div>
+				<div data-role="collapsible" data-collapsed="false" data-iconpos="right" class="collap-color">
+				    <h4>Tài khoản giải trí 10%( PLAY )</h4>
+				    <p>Đây thật sự là tài khoản để bạn xài để thỏa mãn nhu cầu xa xỉ của bản thân. Có thể bạn cần một cái áo mới (chỉ là tại vì bạn thích, chứ không phải vì nhu cầu), mua đĩa game, đĩa nhạc mới. Thậm chí là để đi du lịch, ăn uống bù khú với bạn bè. Và hãy nhớ, đây là khoản tiêu xài BẮT BUỘC, cho dù bạn đang cực kỳ dè sẻn chi tiêu, nhưng phải luôn để ra một khoản cho chính bản thân bạn. Khoản này có thể gom lại vài ba tháng để xài một lần, nhưng bạn ko được để đó quá lâu.</p>
+				</div>
+				<div data-role="collapsible" data-collapsed="false" data-iconpos="right" class="collap-color">
+				    <h4>Tài khoản từ thiện 5%( GIVE )</h4>
+				    <p>Đây là tài khoản để bạn đem cho người khác, có thể là đi quyên góp từ thiện, giúp các trẻ em nghèo hoặc có thể cho bạn bè vay.</p>
+				</div>
+				
+			</div>
+		</div>
 	</div>
 	<div class="event listening"> Loading to App</div>
 </div>
@@ -394,7 +466,9 @@
                      
                 return false;
             }
-			
+		$('#thunhap').keyup(function(){
+			$('.vl').html($('#thunhap').val());
+		});
 		$( document ).on( "click", ".show-page-loading-msg", function() {
 			var $this = $( this ),
 				theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme,
