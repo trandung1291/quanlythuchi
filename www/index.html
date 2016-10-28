@@ -351,7 +351,7 @@
 					<h4>Chi tiêu cần thiết 55%( NEC )</h4>
 					<p>
 						<h3>Được phép chi tiêu : <span id="nec"></span></h3>
-					
+						<input type="hidden" id="numbnec" value="">
 						<p>Đây là tài khoản tiêu dùng cho những chi phí cần thiết của bạn, như là ăn uống, đi lại, kể cả mua sắm những thứ cần thiết cho bản thân.</p>
 						
 						<h3>Dự tính chi tiêu : </h3>
@@ -545,6 +545,7 @@
 			var GIVE = (totalmoney * 5)/100;
 			
 			$('#nec').html(NEC.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + ' vnđ');
+			$('#numbnec').val(NEC);
 			$('#ltss').html(LTSS.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + ' vnđ');
 			$('#edu').html(EDU.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + ' vnđ');
 			$('#ffa').html(FFA.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + ' vnđ');
@@ -554,11 +555,26 @@
 		
 		
 		
+		$('#duchi').keyup(function(){
+		
+			if(parseInt($('#duchi').val()) > parseInt($('#numbnec').val())){
+				
+			
+			
+			}
+		});
 		$( document ).on( "pagecreate", function() {
 			var nextId = 1;
 			$("#add").click(function() {
 				nextId++;
-				var content = "<li><a href='#'>Acura <span class='ui-li-count'>12</span></a><a href='' data-theme='a' data-rel='popup' data-icon='delete' data-position-to='window' data-transition='pop' onclick='removelistview(this)'>Purchase album</a></li>";
+				var mucdichchi = $('#mucdichchi').val();
+				var duchi = $('#duchi').val().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + ' vnđ';
+				var content = "<li><a href='#'> "+ mucdichchi +" <span class='ui-li-count'>"+ duchi +"</span></a><a href='' data-theme='a' data-rel='popup' data-icon='delete' data-position-to='window' data-transition='pop' onclick='removelistview(this)'>Purchase album</a></li>";
+				
+				var numbnec = parseInt($('#numbnec').val());
+				$('#numbnec').val(numbnec - parseInt($('#duchi').val()));
+				$('#mucdichchi').val('');
+				$('#duchi').val('');
 				$( "#listview" ).append( content ).listview( "refresh" );
 			});
 			
