@@ -135,6 +135,9 @@
                 </form>
                                  
             </div>
+			<div data-role="footer" data-position="fixed">
+				<h1>copyright Trandung1291</h1>
+			</div>
             
 		</div>
 		
@@ -142,7 +145,7 @@
 			<div data-role="header" style="overflow:hidden;" role="banner" class="ui-header ui-bar-inherit" data-add-back-btn="true" >
 				<h1 class="ui-title" role="heading" >Danh sách chi tiêu trong tháng</h1>
 					<a href="#" data-icon="gear" class="ui-btn-right ui-link ui-btn ui-icon-gear ui-btn-icon-left ui-shadow ui-corner-all" data-role="button" role="button">Options</a>
-				</div>
+			</div>
             <div data-role="content"> 
                 <div id="output">
                 </div>
@@ -330,7 +333,9 @@
 				</div>
 				
 		   </div>
-             <a></a>
+           <div data-role="footer" data-position="fixed">
+				<h1>copyright Trandung1291</h1>
+		   </div>
         </div>
 		<div data-role="page" id="page3" >
 			<div data-role="header"  data-fullscreen="true" data-add-back-btn="true">
@@ -338,35 +343,77 @@
 			</div>
 			<div data-role="content"> 
 				
-					<label for="thunhap">Thu nhập: <span class="vl"></span></label>
+					<label for="thunhap"><h3>Thu nhập: <span class="vl"></span></h3></label>
 					
-					<input name="thunhap" id="thunhap" value="" type="text" data-clear-btn="true">
+					<input name="thunhap" id="thunhap" value="" type="number" data-clear-btn="true" placeholder="Thu nhập...">
 					
 				<div data-role="collapsible" data-collapsed="false" data-iconpos="right" class="collap-color">
 					<h4>Chi tiêu cần thiết 55%( NEC )</h4>
-					<p>Đây là tài khoản tiêu dùng cho những chi phí cần thiết của bạn, như là ăn uống, đi lại, kể cả mua sắm những thứ cần thiết cho bản thân.</p>
+					<p>
+						<h3>Được phép chi tiêu : <span id="nec"></span></h3>
+					
+						<p>Đây là tài khoản tiêu dùng cho những chi phí cần thiết của bạn, như là ăn uống, đi lại, kể cả mua sắm những thứ cần thiết cho bản thân.</p>
+						
+						<h3>Dự tính chi tiêu : </h3>
+						<fieldset class="ui-grid-a">
+							<div class="ui-block-a">
+								<input name="mucdichchi" id="mucdichchi" value="" type="text" placeholder="Mục đích chi..." >
+							</div>
+							<div class="ui-block-b">
+								<input name="duchi" id="duchi" value="" type="number" data-clear-btn="true" placeholder="Dự định chi...">
+							</div>
+						</fieldset>
+						<button type="button" data-icon="gear" data-iconpos="right" data-mini="true" data-inline="true" id="add">Add</button>
+						<ul data-role="listview" data-split-icon="plus" data-theme="a" data-split-theme="b" data-inset="true" id="listview">
+						</ul>
+						
+					</p>
 				</div>
 				<div data-role="collapsible" data-collapsed="false" data-iconpos="right" class="collap-color">
 				    <h4>Khoản tiết kiệm 10%( LTSS )</h4>
-				    <p>Tài khoản này bạn dùng để tiết kiệm cho các kế hoạch dài hạn như mua nhà , sắm xe, dành dụm cho đám cưới.</p>
+				    <p>
+						<h3>Được phép chi tiêu : <span id="ltss"></span></h3>
+						<p>Tài khoản này bạn dùng để tiết kiệm cho các kế hoạch dài hạn như mua nhà , sắm xe, dành dụm cho đám cưới.</p>
+						<ul data-role="listview" data-inset="true" data-filter="true" data-input="#filter-for-listview">
+							<li><a href="#">Acura</a></li>
+							<li><a href="#">Audi</a></li>
+							<li><a href="#">BMW</a></li>
+							<li><a href="#">Cadillac</a></li>
+							<li><a href="#">Ferrari</a></li>
+						</ul>
+					
+					</p>
 				</div>
 				<div data-role="collapsible" data-collapsed="false" data-iconpos="right" class="collap-color">
 				    <h4>Tài khoản giáo dục 10%( EDU )</h4>
-				    <p>Đây là tài khoản giáo dục cho chính bạn, tức là để cho bạn nâng cấp bản thân. Tài khoản này có thể được chi tiêu vào các khoản như tham gia các khoá học nâng cấp bản thân, mua sách hoặc tài liệu học tập, ...</p>
+				    <p>
+					<h3>Được phép chi tiêu : <span id="edu"></span></h3>
+					Đây là tài khoản giáo dục cho chính bạn, tức là để cho bạn nâng cấp bản thân. Tài khoản này có thể được chi tiêu vào các khoản như tham gia các khoá học nâng cấp bản thân, mua sách hoặc tài liệu học tập, ...
+					</p>
 				</div>
 				<div data-role="collapsible" data-collapsed="false" data-iconpos="right" class="collap-color">
 				    <h4>Tự do tài chính 10%( FFA )</h4>
-				    <p>Đây là tài khoản dùng để đầu tư sinh lợi nhuận. Có nhiều cách để đầu tư nhưng ví dụ bạn có thể dùng để chơi chứng khoán, hoặc để dành khi nào nhiều nhiều có thể hùn vốn làm ăn với bạn bè, hay mở một cửa hàng nhỏ, thậm chí là mở công ty.</p>
+				    <p>
+					<h3>Được phép chi tiêu : <span id="ffa"></span></h3>
+					Đây là tài khoản dùng để đầu tư sinh lợi nhuận. Có nhiều cách để đầu tư nhưng ví dụ bạn có thể dùng để chơi chứng khoán, hoặc để dành khi nào nhiều nhiều có thể hùn vốn làm ăn với bạn bè, hay mở một cửa hàng nhỏ, thậm chí là mở công ty.
+					</p>
 				</div>
 				<div data-role="collapsible" data-collapsed="false" data-iconpos="right" class="collap-color">
 				    <h4>Tài khoản giải trí 10%( PLAY )</h4>
-				    <p>Đây thật sự là tài khoản để bạn xài để thỏa mãn nhu cầu xa xỉ của bản thân. Có thể bạn cần một cái áo mới (chỉ là tại vì bạn thích, chứ không phải vì nhu cầu), mua đĩa game, đĩa nhạc mới. Thậm chí là để đi du lịch, ăn uống bù khú với bạn bè. Và hãy nhớ, đây là khoản tiêu xài BẮT BUỘC, cho dù bạn đang cực kỳ dè sẻn chi tiêu, nhưng phải luôn để ra một khoản cho chính bản thân bạn. Khoản này có thể gom lại vài ba tháng để xài một lần, nhưng bạn ko được để đó quá lâu.</p>
+				    <p>
+					<h3>Được phép chi tiêu : <span id="play"></span></h3>
+					Đây thật sự là tài khoản để bạn xài để thỏa mãn nhu cầu xa xỉ của bản thân. Có thể bạn cần một cái áo mới (chỉ là tại vì bạn thích, chứ không phải vì nhu cầu), mua đĩa game, đĩa nhạc mới. Thậm chí là để đi du lịch, ăn uống bù khú với bạn bè. Và hãy nhớ, đây là khoản tiêu xài BẮT BUỘC, cho dù bạn đang cực kỳ dè sẻn chi tiêu, nhưng phải luôn để ra một khoản cho chính bản thân bạn. Khoản này có thể gom lại vài ba tháng để xài một lần, nhưng bạn ko được để đó quá lâu.</p>
 				</div>
 				<div data-role="collapsible" data-collapsed="false" data-iconpos="right" class="collap-color">
 				    <h4>Tài khoản từ thiện 5%( GIVE )</h4>
-				    <p>Đây là tài khoản để bạn đem cho người khác, có thể là đi quyên góp từ thiện, giúp các trẻ em nghèo hoặc có thể cho bạn bè vay.</p>
+				    <p>
+					<h3>Được phép chi tiêu : <span id="give"></span></h3>
+					Đây là tài khoản để bạn đem cho người khác, có thể là đi quyên góp từ thiện, giúp các trẻ em nghèo hoặc có thể cho bạn bè vay.</p>
 				</div>
 				
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<h1>copyright Trandung1291</h1>
 			</div>
 		</div>
 	</div>
@@ -449,7 +496,7 @@
          
         }
           
-
+		
 		 function submitForm() {
                  
                 var uname = $('[name="username"]').val();
@@ -467,7 +514,8 @@
                 return false;
             }
 		$('#thunhap').keyup(function(){
-			$('.vl').html($('#thunhap').val());
+			$('.vl').html($('#thunhap').val().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + ' vnđ');
+			tinhchitieu(parseInt($('#thunhap').val()));
 		});
 		$( document ).on( "click", ".show-page-loading-msg", function() {
 			var $this = $( this ),
@@ -487,6 +535,39 @@
 		.on( "click", ".hide-page-loading-msg", function() {
 			$.mobile.loading( "hide" );
 		});
+		
+		function tinhchitieu(totalmoney){
+			var NEC = (totalmoney * 55)/100;
+			var LTSS = (totalmoney * 10)/100;
+			var EDU = (totalmoney * 10)/100;
+			var FFA = (totalmoney * 10)/100;
+			var PLAY = (totalmoney * 10)/100;
+			var GIVE = (totalmoney * 5)/100;
+			
+			$('#nec').html(NEC.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + ' vnđ');
+			$('#ltss').html(LTSS.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + ' vnđ');
+			$('#edu').html(EDU.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + ' vnđ');
+			$('#ffa').html(FFA.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + ' vnđ');
+			$('#play').html(PLAY.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + ' vnđ');
+			$('#give').html(GIVE.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + ' vnđ');
+		}
+		
+		
+		
+		$( document ).on( "pagecreate", function() {
+			var nextId = 1;
+			$("#add").click(function() {
+				nextId++;
+				var content = "<li><a href='#'>Acura <span class='ui-li-count'>12</span></a><a href='' data-theme='a' data-rel='popup' data-icon='delete' data-position-to='window' data-transition='pop' onclick='removelistview(this)'>Purchase album</a></li>";
+				$( "#listview" ).append( content ).listview( "refresh" );
+			});
+			
+		});
+		
+		function removelistview (crLi){
+			$(crLi).parent().remove();
+			$( "#listview" ).listview( "refresh" );
+		}
     </script>
 </body>
 
