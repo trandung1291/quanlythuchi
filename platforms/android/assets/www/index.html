@@ -343,7 +343,7 @@
 			</div>
 			<div data-role="content"> 
 				
-					<label for="thunhap"><h3>Thu nhập: <span class="vl"></span></h3></label>
+					<label for="thunhap"><h3>Thu nhập tháng <span class="thang"></span>: <span class="vl"></span></h3></label>
 					
 					<input name="thunhap" id="thunhap" value="" type="number" data-clear-btn="true" placeholder="Thu nhập...">
 					
@@ -480,6 +480,10 @@
         app.initialize();
 		document.addEventListener("deviceready", onDeviceReady, false);
 		function onDeviceReady() {
+			
+			var d = new Date();
+			var n = d.getMonth();
+			$('.thang').html(n+1);
             // var db = openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024);
 			// db.transaction(function (tx) {
 			   // tx.executeSql('CREATE TABLE IF NOT EXISTS LOGS (id unique, log)');
