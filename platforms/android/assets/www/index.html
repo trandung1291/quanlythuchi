@@ -112,21 +112,39 @@
 
 <div id="deviceready" >
 	<div class="event received">
-		
+		<div data-role="page" id="page0" >
+			 <div data-role="header" >
+                <h1>Quản lý chi tiêu</h1>
+            </div>
+            <div data-role="ui-content"> 
+				<div class="ui-grid-b ui-responsive">
+					<form method="POST" onSubmit="return submitForm()" data-ajax="false">
+						<label class="ui-hidden-accessible">Username</label><input name="username" type="text" placeholder="Username">
+						<input name="email" type="text" placeholder="Email">
+				
+						<input type="submit" value="Đăng ký">
+					</form>
+                </div>        
+            </div>
+			<div data-role="footer" data-position="fixed">
+				<h1>copyright Trandung1291</h1>
+			</div>
+            
+		</div>
 		<div data-role="page" id="page1" >
             <div data-role="header" >
                 <h1>Quản lý chi tiêu</h1>
 				<div data-role="navbar" class="ui-navbar" role="navigation">
 					<ul class="ui-grid-b">
 							<li class="ui-block-a"><a href="#" data-icon="grid" class="ui-link ui-btn ui-icon-grid ui-btn-icon-top ui-btn-active" onclick=" $.mobile.changePage( '#page3', { reverse: false, transition: 'slide' } );">Summary</a></li>
-							<li class="ui-block-b"><a href="#" data-icon="star" class="ui-link ui-btn ui-icon-star ui-btn-icon-top">Favs</a></li>
+							<li class="ui-block-b"><a href="#" data-icon="star" class="ui-link ui-btn ui-icon-star ui-btn-icon-top" onclick=" $.mobile.changePage( '#page4', { reverse: false, transition: 'slide' } );">Favs</a></li>
 							<li class="ui-block-c"><a href="#" data-icon="gear" class="ui-link ui-btn ui-icon-gear ui-btn-icon-top">Setup</a></li>
 					</ul>
 				</div>
             </div>
 			
 				
-            <div data-role="content"> 
+            <div data-role="ui-content" > 
                 <form method="POST" onSubmit="return submitForm()" data-ajax="false">
                     <label class="ui-hidden-accessible">Username</label><input name="username" type="text" placeholder="Username">
                     <input name="email" type="text" placeholder="Email">
@@ -146,7 +164,7 @@
 				<h1 class="ui-title" role="heading" >Danh sách chi tiêu trong tháng</h1>
 					<a href="#" data-icon="gear" class="ui-btn-right ui-link ui-btn ui-icon-gear ui-btn-icon-left ui-shadow ui-corner-all" data-role="button" role="button">Options</a>
 			</div>
-            <div data-role="content"> 
+            <div data-role="ui-content"> 
                 <div id="output">
                 </div>
                
@@ -339,9 +357,9 @@
         </div>
 		<div data-role="page" id="page3" >
 			<div data-role="header"  data-fullscreen="true" data-add-back-btn="true">
-			  <h1>Tính toán chi tiêu</h1>
+			  <h1>Kế hoạch chi tiêu</h1>
 			</div>
-			<div data-role="content"> 
+			<div data-role="ui-content"> 
 				
 					<label for="thunhap"><h3>Thu nhập tháng <span class="thang"></span>: <span class="vl"></span></h3></label>
 					
@@ -471,6 +489,28 @@
 				<h1>copyright Trandung1291</h1>
 			</div>
 		</div>
+		<div data-role="page" id="page4" >
+			<div data-role="header"  data-fullscreen="true" data-add-back-btn="true">
+			  <h1>Chi tiết chi tiêu ngày <p class='current_date'></p></h1>
+			</div>
+			<div data-role="ui-content"> 
+				<fieldset class="ui-grid-a">
+					<div class="ui-block-a">
+						<input name="tenmucchi" id="tenmucchi" value="" type="text" placeholder="Đã chi..." >
+					</div>
+					<div class="ui-block-b">
+						<input name="tiendachi" id="tiendachi" value="" type="number" data-clear-btn="true" placeholder="Số tiền đã chi...">
+					</div>
+				</fieldset>
+				<button type="button" data-icon="gear" data-iconpos="right" data-mini="true" data-inline="true" id="addgive" onclick='addlistviewchitietchi("#tenmucchi","#tiendachi","#listviewchitietchi")'>Add</button>
+				<ul data-role="listview" data-split-icon="plus" data-theme="a" data-split-theme="b" data-inset="true" id="listviewchitietchi">
+				</ul>
+				<button class=" ui-btn ui-btn-b ui-icon-star ui-btn-icon-left ui-shadow ui-corner-all" data-icon="star" data-theme="b" data-form="ui-btn-up-b">Lưu</button>
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<h1>copyright Trandung1291</h1>
+			</div>
+		</div>
 	</div>
 	<div class="event listening"> Loading to App</div>
 </div>
@@ -484,6 +524,8 @@
 			var d = new Date();
 			var n = d.getMonth();
 			$('.thang').html(n+1);
+			var crdate =  new Date().toLocaleDateString();
+			$('.current_date').html(crdate);
             // var db = openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024);
 			// db.transaction(function (tx) {
 			   // tx.executeSql('CREATE TABLE IF NOT EXISTS LOGS (id unique, log)');
@@ -564,7 +606,7 @@
                 window.localStorage.setItem("username", uname);
                 window.localStorage['email'] = _email;
                  
-                $.mobile.changePage( "#page2", { reverse: false, transition: "slide" } );
+                $.mobile.changePage( "#page1", { reverse: false, transition: "slide" } );
                  
                 $('#output').html("Username: " + window.localStorage.getItem("username") + "<br>" + 
                                     "Email: " + window.localStorage["email"]
@@ -650,7 +692,16 @@
 			$( idlistview ).listview( "refresh" );
 		}
 		
-		
+		// -------------------- XU LY JS PAGE 4 --------------------------------------------------//
+		function addlistviewchitietchi(idmucdichchi,idduchi,idlistview){		
+			var mucdichchi = $(idmucdichchi).val();
+			var duchi = $(idduchi).val().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + ' vnđ';
+			var content = "<li><a href='#'> "+ mucdichchi +" <span class='ui-li-count'>"+ duchi +"</span></a><a href='' data-theme='a' data-rel='popup' data-icon='delete' data-position-to='window' data-transition='pop' onclick='removelistview(this,\""+idlistview+"\")'>Purchase album</a></li>";
+					
+			$(idmucdichchi).val('');
+			$(idduchi).val('');
+			$(idlistview).append( content ).listview( "refresh" );	
+		}
     </script>
 </body>
 
